@@ -49,3 +49,9 @@
            :required ["city" "state" "street_address"]
            :schema {:loadingURI "#"
                     :pointer "/definitions/address"}}])))
+
+(fact "References to a schema with ID."
+  (let [schema (slurp (io/resource "scjsv/with_id.json"))
+        validate (v/validator schema)
+        valid {:foo "foo"}]
+    (validate valid) => nil))
